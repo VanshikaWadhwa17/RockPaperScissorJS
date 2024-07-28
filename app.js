@@ -2,6 +2,7 @@ let userScore=0;
 let compScore=0;
 
 const choices=document.querySelectorAll(".choice");
+const msg=document.querySelector("#msg")
 
 const generateCompChoice=()=>{
 //rock,paper,scissors - comp will randomly generate
@@ -13,10 +14,10 @@ const generateCompChoice=()=>{
 }
 
 const playGame=(userChoice)=>{
-console.log("user choice =", userChoice)
+//console.log("user choice =", userChoice)
 //generate computer choice -> modular programming (every fxn will perform one action each)
 const compChoice=generateCompChoice()
-console.log("comp choice =", compChoice)
+//console.log("comp choice =", compChoice)
 if(userChoice===compChoice){
     //Draw
     drawGame()
@@ -32,21 +33,27 @@ else{
     else{
         userWin = compChoice === "rock" ? false : true
     }
-    showWinner(userWin)
+    showWinner(userWin, userChoice, compChoice)
 }
 }
 
-const showWinner=(userWin)=>{
+const showWinner=(userWin, userChoice, compChoice)=>{
     if(userWin){
-        console.log("you win")
+        //console.log("you win")
+        msg.innerText= `You Win! Your ${userChoice} beats ${compChoice}`
+        msg.style.backgroundColor="green"
     }
     else{
-        console.log("you loose")
+        //console.log("you loose")
+        msg.innerText= `You Lost! ${compChoice} beats your ${userChoice}`
+        msg.style.backgroundColor="red"
     }
 }
 
 const drawGame=()=>{
-    console.log("Game was Draw")
+    //console.log("Game was Draw")
+    msg.innerText= "Game Was Draw. Play Again!"
+    msg.style.backgroundColor="#081b31"
 }
 
 choices.forEach((choice)=>{
