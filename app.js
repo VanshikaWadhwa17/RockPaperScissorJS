@@ -4,6 +4,10 @@ let compScore=0;
 const choices=document.querySelectorAll(".choice");
 const msg=document.querySelector("#msg")
 
+const userScorePara= document.querySelector("#user-score")
+const compScorePara= document.querySelector("#comp-score")
+
+
 const generateCompChoice=()=>{
 //rock,paper,scissors - comp will randomly generate
     const options=["rock", "paper", "scissors"];
@@ -40,11 +44,15 @@ else{
 const showWinner=(userWin, userChoice, compChoice)=>{
     if(userWin){
         //console.log("you win")
+        userScore++
+        userScorePara.innerText=userScore
         msg.innerText= `You Win! Your ${userChoice} beats ${compChoice}`
         msg.style.backgroundColor="green"
     }
     else{
         //console.log("you loose")
+        compScore++
+        compScorePara.innerText=compScore
         msg.innerText= `You Lost! ${compChoice} beats your ${userChoice}`
         msg.style.backgroundColor="red"
     }
